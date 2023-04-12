@@ -1,7 +1,12 @@
 package com.can_erysr.wondersoftheworld;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import org.w3c.dom.Text;
+import java.util.Locale;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 "Alexandria Lighthouse was built in Alexandria, Egypt; it is one of the Seven Wonders of the World and the tallest of the lighthouses ever built.",
                 R.drawable.iskenderiye);
         Wonders rodos = new Wonders("Colossus of Rhodes","Greece",
-                "The Statue of Rhodes is one of the seven wonders of the Ancient World. It is the statue of the Greek Sun God Helios, located at the entrance of the harbor of the city of Rhodes on the island of Rhodes in ancient times. In 305 BC, the Macedonian Antigonites, the successors of Alexander the Great, attacked Rhodes and the siege lasted for 1 year.",
+                "The Statue of Rhodes is one of the seven wonders of the Ancient World. It is the statue of the Greek Sun God Helios, located at the entrance of the harbor of the city of Rhodes on the island of Rhodes in ancient times.",
                 R.drawable.rodos);
         Wonders zeus = new Wonders("Statue of Zeus at Olympia","Turkey",
                 "Zeus statue, BC It was a gigantic statue depicting the god Zeus seated, made by Fidias for the Temple of Zeus, built on Mount Olympus in 456. Fidias BC. His magnificent 13-meter-high work, which is estimated to have been made between 438 and 430, is among the Seven Wonders of the World.",
@@ -57,6 +62,17 @@ public class MainActivity extends AppCompatActivity {
         wondersArrayList.add(rodos);
         wondersArrayList.add(zeus);
 
+
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(wondersArrayList);
+        binding.recyclerView.setAdapter(recyclerAdapter);
+
+        /*
+        //Adapter
+        //Listview
+
+        //mapping
+
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
                 wondersArrayList.stream().map(wonders -> wonders.name).collect(Collectors.toList()));
         binding.listView.setAdapter(arrayAdapter);
@@ -68,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+         */
 
     }
 }
